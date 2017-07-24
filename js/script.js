@@ -1,7 +1,7 @@
-let index = 0;
+let index = 1;
 
 function plusIndex(n) {
-    index = index + 1;
+    index = index + n;
     showImage(index);
 }
 
@@ -14,4 +14,18 @@ function showImage(n) {
         x[i].style.display = "none";
     }
     x[index - 1].style.display = "block";
+}
+
+autoSlide();
+
+function autoSlide() {
+    let i;
+    let x = document.getElementsByClassName("sliders");
+    for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";
+    }
+    if (index > x.length) { index = 1 };
+    x[index - 1].style.display = "block";
+    index++;
+    setTimeout(autoSlide, 2000);
 }
